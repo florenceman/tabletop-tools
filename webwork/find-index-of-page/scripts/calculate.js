@@ -35,25 +35,31 @@ var calculate_result = function(v1,v2){
 	index_count = 1,
 	x = 0,
 	y = 0,
-	z = 0;
+	z = 0,
+	dest = alphabet.indexOf(v2[0]),
+	o1 = '';
 
-	var number_scale = parseInt(total_amount_of_sample / list_size);
-	if (total_amount_of_sample % list_size){number_scale++;}
+	var number_scale = parseInt(total_amount_of_sample / v1);
+	if (total_amount_of_sample % v1){number_scale++;}
 	var scaled_letters = [];
 
 	for (var w in sample_letters){
 		z = sample_letters[w]
-		x = (z / number_scale).Floor;
+		x = parseInt(z / number_scale);
+		//return x;
 		y = z % number_scale;
 		if (y){x++;}
-		if (!(x)){x=1;}
+		if (x==0){x=1;}
 		scaled_letters.push(x);
 	}
+	//return scaled_letters.join();
 	for (var w in scaled_letters){
+		z = scaled_letters[w];
+		if (dest == z){break}
 		total_so_far.push(index_count);
-		index_count += scaled_letters[w];
+		index_count += z;
 	}
-	x = total_so_far[alphabet.indexOf(word_to_input.charAt(0))];
+	x = index_count;
 	
 	return x;
 };
