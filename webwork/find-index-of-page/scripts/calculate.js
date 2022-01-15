@@ -28,31 +28,31 @@ var calculate_result = function(v1,v2){
 	17779,
 	2722
 ],
+
 	total_so_far = [],
 	list_size = v1,
 	word_to_input = v2,
 	index_count = 1,
 	x = 0,
-	y = 0;
+	y = 0,
+	z = 0;
 
 	var number_scale = parseInt(total_amount_of_sample / list_size);
 	if (total_amount_of_sample % list_size){number_scale++;}
 	var scaled_letters = [];
-	
 
-	for (var w in scaled_letters){
-		x = parseInt(sample_letters[w] / total_amount_of_sample);
-		y = sample_letters[w] % total_amount_of_sample;
+	for (var w in sample_letters){
+		z = sample_letters[w]
+		x = (z / number_scale).Floor;
+		y = z % number_scale;
 		if (y){x++;}
 		if (!(x)){x=1;}
 		scaled_letters.push(x);
 	}
-	
 	for (var w in scaled_letters){
 		total_so_far.push(index_count);
 		index_count += scaled_letters[w];
 	}
-	
 	x = total_so_far[alphabet.indexOf(word_to_input.charAt(0))];
 	
 	return x;
