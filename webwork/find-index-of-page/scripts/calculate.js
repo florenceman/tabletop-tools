@@ -48,18 +48,14 @@ var calculate_result = function(v1,v2){
 		x = parseInt(z / number_scale);
 		//return x;
 		y = z % number_scale;
-		if (y){x++;}
-		if (x==0){x=1;}
 		scaled_letters.push(x);
 	}
 	//return scaled_letters.join();
 	for (var w in scaled_letters){
 		z = scaled_letters[w];
-		if (dest == z){break}
+		if (dest==w){return index_count;}
 		total_so_far.push(index_count);
 		index_count += z;
 	}
-	x = index_count;
-	
-	return x;
+	return index_count;
 };
