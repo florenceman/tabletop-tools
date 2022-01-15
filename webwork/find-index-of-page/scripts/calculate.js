@@ -1,4 +1,4 @@
-var calculate_result = function(){
+var calculate_result = function(v1,v2){
 	var total_amount_of_sample = 1000041,
 	alphabet = 'abcdefghijklmnopqrstuvwxyz',
 	sample_letters = [84966,
@@ -29,8 +29,8 @@ var calculate_result = function(){
 	2722
 ],
 	total_so_far = [],
-	list_size = $('#in_1').val(),
-	word_to_input = $('#in_2').val(),
+	list_size = v1,
+	word_to_input = v2,
 	index_count = 1,
 	x = 0,
 	y = 0;
@@ -40,17 +40,17 @@ var calculate_result = function(){
 	var scaled_letters = [];
 	
 
-	for (var v in scaled_letters){
-		x = parseInt(sample_letters[v] / total_amount_of_sample);
-		y = sample_letters[v] % total_amount_of_sample;
+	for (var w in scaled_letters){
+		x = parseInt(sample_letters[w] / total_amount_of_sample);
+		y = sample_letters[w] % total_amount_of_sample;
 		if (y){x++;}
 		if (!(x)){x=1;}
 		scaled_letters.push(x);
 	}
 	
-	for (var v in scaled_letters){
+	for (var w in scaled_letters){
 		total_so_far.push(index_count);
-		index_count += scaled_letters[v];
+		index_count += scaled_letters[w];
 	}
 	
 	x = total_so_far[alphabet.indexOf(word_to_input.charAt(0))];
